@@ -68,3 +68,48 @@ navegacion.appendChild(nuevoEnlace);
 
 
 console.log(nuevoEnlace);
+
+
+//eventos
+
+console.log(1);
+
+//window es un nivel más alto que document, document es solo el htm window es también todas las funciones
+
+window.addEventListener('load', function() { //vamos a ver cuando ocurre el evento de que cargue la página, la función que le añadimos se le conoce como callback
+
+    //load espera a que el JS y los archivos  que depeden del HTML estén listos
+    //saldría el 1 luego el 5 y luego el 2, ya que espera que esté cargado todo
+
+    console.log(2);
+
+})
+
+//también se podría poner de la siguiente manera si la función es muy grande
+
+window.addEventListener('load', imprimir);
+
+function imprimir() {
+    console.log(2);
+}
+
+//otra forma de registrar este load
+
+window.onload = function() {
+    console.log(3);
+}
+
+document.addEventListener('DOMContentLoaded', function() { //solo espera al html, no espera ni css ni imagenes
+    //de normal se usa este, porque de normal no vas a modificar las hojas de estilo
+    console.log(4);
+});
+
+
+
+console.log(5);
+
+
+//este evento salta cuando haces scroll
+window.onscroll = function() {
+    console.log('scrolling...');
+}
