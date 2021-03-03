@@ -110,6 +110,21 @@ console.log(5);
 
 
 //este evento salta cuando haces scroll
-window.onscroll = function() {
+window.onscroll = function() { //aqui también le podrías pasar evento y hacer un console.log y te saldría todo el rato un mensaje con cada scroll que hagas 
     console.log('scrolling...');
 }
+
+
+//seleccionar un elemento y asociarle un evento
+
+const botonEnviar = document.querySelector('.boton--primario'); //si escribes en la consola de chrome botonEnviar te devuelve el input que estás seleccionando y puedes ver si lo has seleccionado de forma correcta
+//una vez que tienes selecionado el elemento, tienes disponible el addeventlistener
+
+botonEnviar.addEventListener('click', function(evento){
+
+    console.log(evento);
+    evento.preventDefault(); //esto puede ayudarnos a validar un formulario antes de enviarlo
+    console.log('enviando formulario');
+
+    
+});
