@@ -70,49 +70,49 @@ navegacion.appendChild(nuevoEnlace);
 console.log(nuevoEnlace);
 
 
-//eventos
+// //eventos
 
-console.log(1);
+// console.log(1);
 
-//window es un nivel más alto que document, document es solo el htm window es también todas las funciones
+// //window es un nivel más alto que document, document es solo el htm window es también todas las funciones
 
-window.addEventListener('load', function() { //vamos a ver cuando ocurre el evento de que cargue la página, la función que le añadimos se le conoce como callback
+// window.addEventListener('load', function() { //vamos a ver cuando ocurre el evento de que cargue la página, la función que le añadimos se le conoce como callback
 
-    //load espera a que el JS y los archivos  que depeden del HTML estén listos
-    //saldría el 1 luego el 5 y luego el 2, ya que espera que esté cargado todo
+//     //load espera a que el JS y los archivos  que depeden del HTML estén listos
+//     //saldría el 1 luego el 5 y luego el 2, ya que espera que esté cargado todo
 
-    console.log(2);
+//     console.log(2);
 
-})
+// })
 
-//también se podría poner de la siguiente manera si la función es muy grande
+// //también se podría poner de la siguiente manera si la función es muy grande
 
-window.addEventListener('load', imprimir);
+// window.addEventListener('load', imprimir);
 
-function imprimir() {
-    console.log(2);
-}
+// function imprimir() {
+//     console.log(2);
+// }
 
-//otra forma de registrar este load
+// //otra forma de registrar este load
 
-window.onload = function() {
-    console.log(3);
-}
+// window.onload = function() {
+//     console.log(3);
+// }
 
-document.addEventListener('DOMContentLoaded', function() { //solo espera al html, no espera ni css ni imagenes
-    //de normal se usa este, porque de normal no vas a modificar las hojas de estilo
-    console.log(4);
-});
+// document.addEventListener('DOMContentLoaded', function() { //solo espera al html, no espera ni css ni imagenes
+//     //de normal se usa este, porque de normal no vas a modificar las hojas de estilo
+//     console.log(4);
+// });
 
 
 
-console.log(5);
+// console.log(5);
 
 
 //este evento salta cuando haces scroll
-window.onscroll = function() { //aqui también le podrías pasar evento y hacer un console.log y te saldría todo el rato un mensaje con cada scroll que hagas 
-    console.log('scrolling...');
-}
+// window.onscroll = function() { //aqui también le podrías pasar evento y hacer un console.log y te saldría todo el rato un mensaje con cada scroll que hagas 
+//     console.log('scrolling...');
+// }
 
 
 //seleccionar un elemento y asociarle un evento
@@ -128,3 +128,56 @@ botonEnviar.addEventListener('click', function(evento){
 
     
 });
+
+
+//evento de los inputs y textarea
+
+const datos = {
+    nombre: '',
+    email: '',
+    mensaje: ''
+}
+const nombre = document.querySelector('#nombre');
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
+
+
+// nombre.addEventListener('change', function() { //change salta cuando cambias de cuadradito
+//     console.log('Escribiendo...');
+// });
+
+// nombre.addEventListener('input', function() { //input salta con cada vez que escribes algo por teclado
+//     console.log('Escribiendo...');
+// });
+
+// nombre.addEventListener('input', function(evento) { //al pasarle evento, va saliendo cada letra que escribes
+//     console.log(evento);
+// });
+
+
+// nombre.addEventListener('input', function(evento) { //al pasarle target.value te va saliendo lo que le escribes entero
+//     console.log(evento.target.value);
+// });
+// email.addEventListener('input', function(evento) { //al pasarle target.value te va saliendo lo que le escribes entero
+//     console.log(evento.target.value);
+// });
+
+// mensaje.addEventListener('input', function(evento) { //al pasarle target.value te va saliendo lo que le escribes entero
+//     console.log(evento.target.value);
+// });
+
+//así sería mucho texto, se puede reducir un poco 
+
+nombre.addEventListener('input', leerTexto);
+email.addEventListener('input', leerTexto);
+mensaje.addEventListener('input', leerTexto);
+
+function leerTexto(evento) {
+    // console.log(evento.target.value);
+
+    console.log(evento.target);
+    datos[evento.target.id] = evento.target.value; //para meter los datos en el array de forma dinamica
+
+
+    console.log(datos); 
+}
