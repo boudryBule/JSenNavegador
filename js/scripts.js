@@ -117,17 +117,39 @@ console.log(nuevoEnlace);
 
 //seleccionar un elemento y asociarle un evento
 
-const botonEnviar = document.querySelector('.boton--primario'); //si escribes en la consola de chrome botonEnviar te devuelve el input que estás seleccionando y puedes ver si lo has seleccionado de forma correcta
-//una vez que tienes selecionado el elemento, tienes disponible el addeventlistener
+// const botonEnviar = document.querySelector('.boton--primario'); //si escribes en la consola de chrome botonEnviar te devuelve el input que estás seleccionando y puedes ver si lo has seleccionado de forma correcta
+// //una vez que tienes selecionado el elemento, tienes disponible el addeventlistener
 
-botonEnviar.addEventListener('click', function(evento){
+// botonEnviar.addEventListener('click', function(evento){
 
-    console.log(evento);
-    evento.preventDefault(); //esto puede ayudarnos a validar un formulario antes de enviarlo
-    console.log('enviando formulario');
+//     console.log(evento);
+//     evento.preventDefault(); //esto puede ayudarnos a validar un formulario antes de enviarlo
+//     console.log('enviando formulario');
 
     
-});
+// });
+
+
+/* 
+            IMPORTANTE
+
+        si quieres usar el de tipo submit tienes que pasarle un formulario y tienes que tener a fuerza un input de tipo submit
+
+
+
+        si quieres escuchar por un click puede ser cualquier elemento incluso un texto
+
+
+        al estar validando un formulario, mejor submit
+
+
+
+
+*/
+
+
+
+
 
 
 //evento de los inputs y textarea
@@ -181,3 +203,28 @@ function leerTexto(evento) {
 
     console.log(datos); 
 }
+
+
+/* 
+        ORDEN DE LOS ELEMENTOS
+        1. variables en la parte superior
+        2. Después todos los event listener
+        3. Luego las funciones
+
+
+
+*/
+
+//el evento de submit
+const formulario = document.querySelector('.formulario');
+formulario.addEventListener('submit', function(evento) {
+     evento.preventDefault();
+
+     //validar el formulario
+
+
+
+     //enviar el formulario
+
+     console.log('EEEEEnviando formulario');
+})
