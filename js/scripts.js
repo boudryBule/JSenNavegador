@@ -201,7 +201,7 @@ function leerTexto(evento) {
     datos[evento.target.id] = evento.target.value; //para meter los datos en el array de forma dinamica
 
 
-    console.log(datos); 
+    // console.log(datos); 
 }
 
 
@@ -221,10 +221,46 @@ formulario.addEventListener('submit', function(evento) {
      evento.preventDefault();
 
      //validar el formulario
-
+     //aplicamos destructuring para extraer los datos de un array  y crear las variables en un mismo paso
+     const { nombre, email, mensaje } = datos;
+     
+    if ( nombre === '' || email === ''|| mensaje === '' ) {
+        // console.log('Todos los campos son obligatorios' );
+        //vamos a crear una función que muestre un error por pantalla
+        mostrarError('Todos los campos son obligatorios');
+        return; //para la ejecución
+    }
 
 
      //enviar el formulario
-
+        mostrarCorrecto('Enviado formulario correctamente');
      console.log('EEEEEnviando formulario');
 })
+
+
+function mostrarError(mensaje) {
+    const error = document.createElement('p');
+    error.textContent = mensaje;
+    error.classList.add('error');
+
+
+    formulario.appendChild(error); //para que lo agregue al html 
+
+    //hacer que desaparezca el aviso después de 5 segundos
+    setTimeout(() => {
+        error.remove();
+    }, 5000);
+}
+
+function mostrarCorrecto(mensaje) {
+    const alerta = document.createElement('p');
+    alerta.textContent = mensaje;
+    alerta.classList.add('correcto');
+
+    formulario.appendChild(alerta);
+
+        //hacer que desaparezca el aviso después de 5 segundos
+        setTimeout(() => {
+            alerta.remove();
+        }, 5000);
+}
